@@ -1,0 +1,38 @@
+{% load static %}
+<style>
+.button{
+    height:50px;
+    font-size:17pt;
+    width:120px;
+    background-color: Gold;
+}
+
+</style>
+
+<!DOCTYPE html>
+<html>   
+<head>  
+<title> THANKYOU </title>    
+</head>    
+<body bgcolor='lightyellow' size=20>
+    <center><b><p style=font-size:70px > THANKYOU </p></center> </b>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="container"> 
+	    <img src="{% static 'thanks.jpg' %}" height=80% width=55% align=right>
+	    <h1><p style=font-size:40px >Do visit us again!<br><br><br> Would you like to upload or generate reports? <br></p></h1> <br>  
+	    <input type="radio" id="generate" name="choice" value="generate" style="height:30px; width:45px; vertical-align: middle;"><label for="generate" style="font-size:25px;">GENERATE REPORTS AND ANALYSIS</label><br>
+	    <input type="radio" id="report" name="choice" value="report" style="height:30px; width:45px; vertical-align: middle;"><label for="report" style="font-size:25px;">UPLOAD DATA</label><br><br>
+	    <h1><button class="button login" type="submit">CHOOSE</button></h1>
+        </div>   
+	
+    </form>    
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <b><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></b>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>     
+</html> 

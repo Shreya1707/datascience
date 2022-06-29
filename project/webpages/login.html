@@ -1,0 +1,57 @@
+{% load static %}
+<style>
+.button{
+    height:50px;
+    font-size:14pt;
+    width:100px;
+    background-color: yellow;
+}
+#username
+{
+    height:50px;
+    font-size:15pt;
+    background-color: lightblue;
+}
+#password
+{
+    background-color: lightblue;
+    height:50px;
+    font-size:15pt;
+}
+#email
+{
+    height:50px;
+    font-size:15pt;
+    background-color: lightblue;
+}
+
+</style>
+<!DOCTYPE html>
+<html>   
+<head>  
+<title> Login Page </title>    
+</head>    
+<body>
+    <h1> <center><p style=font-size:50px >LOGIN FORM </p></center> </h1> 
+    <img src="{% static 'myimage.jpg' %}" height=90% width=75% align=left>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="container">   
+            <br><br><h1><label>Username :</label></h1>
+	    <input type="text" placeholder="Enter Username" name="username" id="username" size="30" required> 
+	    <br><br><h1><label>Password :</label></h1> 
+            <input type="password" placeholder="Enter Password" name="password" id="password" size="30" required> 
+	    <br><br><h1><label>Email id :</label></h1> 
+	    <input type="text" placeholder="Enter email" name="email" id="email" size="30" required> <br>
+	    <br><h1><button class="button login" type="submit">Login</button> </h1>
+        </div>   
+    </form>    
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <b><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></b>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>     
+</html> 

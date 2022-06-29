@@ -1,0 +1,37 @@
+{% load static %}
+<style>
+.button{
+    height:50px;
+    font-size:17pt;
+    width:120px;
+    background-color: Gold;
+}
+
+</style>
+
+<!DOCTYPE html>
+<html>   
+<head>  
+<title> WELCOME </title>    
+</head>    
+<body bgcolor='lightyellow' >
+    <center><b><p style=font-size:70px > WELCOME </p></center> </b>
+    <img src="{% static 'welcome.jpg' %}" height=80% width=55% align=left>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="container"> 
+	    <h1><center><p style=font-size:50px >What would you like to do?</p></center></h1> <br>  
+	    <input type="radio" id="generate" name="option" value="generate" style="height:20px; width:35px; vertical-align: middle;"><label for="generate" style="font-size:25px;">GENERATE REPORTS AND ANALYSIS</label><br>
+	    <input type="radio" id="report" name="option" value="report" style="height:20px; width:35px; vertical-align: middle;"><label for="report" style="font-size:25px;">UPLOAD A REPORT</label><br><br>
+	    <center><h1><button class="button login" type="submit">CHOOSE</button> </h1></center>
+        </div>   
+    </form>    
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <b><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></b>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>     
+</html> 

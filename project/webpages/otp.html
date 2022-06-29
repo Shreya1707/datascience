@@ -1,0 +1,43 @@
+{% load static %}
+<style>
+.button{
+    height:50px;
+    font-size:14pt;
+    width:100px;
+    background-color: yellow;
+}
+#otp
+{
+    height:50px;
+    font-size:15pt;
+    background-color: lightblue;
+}
+
+</style>
+<!DOCTYPE html>
+<html>   
+<head>  
+<title> OTP VERIFICATION </title>    
+</head>    
+<body>
+    <h1> <center><p style=font-size:50px > OTP VERIFICATION </p></center> </h1> 
+    <img src="{% static 'otpimage.jpg' %}" height=90% width=75% align=left>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="container">   
+	    <br><br><br><h1><label>OTP :</label></h1>
+	    <input type="text" placeholder="Enter OTP" name="otp" id="otp" size="30" required> 
+	    <br><br>
+            <h1><button class="button login" type="submit">submit</button> </h1>       
+            <br><br>
+        </div>   
+    </form>    
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <b><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></b>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>     
+</html> 

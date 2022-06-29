@@ -1,0 +1,5 @@
+{% block content %}
+{% if chart %}
+<img ssrc="data:image/png;base64,{{chart|safe}}">
+{% endif %}
+{% endblock content %}
